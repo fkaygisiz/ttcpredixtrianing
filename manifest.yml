@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: ttcpredixtraining2
+  - name: ttc-training-<your-name>
     buildpack: java_buildpack
     memory: 512M
     path: target/ttcpredixtraining-0.0.1-SNAPSHOT.jar

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TTC Predix Training</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var saveAction = function() {
+			$.post("/user-actions", {
+				action : $("#action-input").val()
+			}, function(data, status) {
+				alert("Successfully saved!!!")
+				console.log("Data: " + data + "\nStatus: " + status);
+				getUserActions();
+			});
+		};
+
+		var getUserActions = function() {
+			$.get("/user-actions", function(data, status) {
+				console.log("Data: " + data + "\nStatus: " + status);
+				$("#actions").html("");
+				$.each(data, function(index, value) {
+					$("#actions").append("<div>" + value + "</div>");
+				});
+			});
+		};
+
+		var deleteOldActions = function() {
+			$.ajax({
+				url : '/user-actions',
+				type : 'DELETE',
+				success : function(result) {
+					alert("Successfully deleted!!!")
+					getUserActions();
+				}
+			});
+		};
+
+		$("#button").click(saveAction);
+		$("#delete-button").click(deleteOldActions);
+		getUserActions();
+
+	});
+</script>
+</head>
+<body>
+	<H3>Action to save:</H3>
+	<p>
+		<input id="action-input" width="150">
+		<button id="button">Save</button>
+	<H3>Old Actions:</H3>
+	<p>
+	<div id="actions"></div>
+	<p>
+		<button id="delete-button">Delete Old Actions</button>
+</body>
+</html>

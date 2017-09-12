@@ -14,6 +14,8 @@
 				alert("Successfully saved!!!")
 				console.log("Data: " + data + "\nStatus: " + status);
 				getUserActions();
+			}).fail(function() {
+				alert("Error  occured!!!")
 			});
 		};
 
@@ -24,6 +26,8 @@
 				$.each(data, function(index, value) {
 					$("#actions").append("<div>" + value + "</div>");
 				});
+			}).fail(function() {
+				alert("Error  occured!!!")
 			});
 		};
 
@@ -34,7 +38,10 @@
 				success : function(result) {
 					alert("Successfully deleted!!!")
 					getUserActions();
-				}
+				},
+				error : function(result) {
+					alert("error occured!!!")
+				}  
 			});
 		};
 

@@ -12,11 +12,10 @@ spring:
 server:
   port: 8080
 
-#${vcap.services.postgres.credentials.jdbc_uri}
 redis:
-  host : 10.72.6.33
-  port : 59264
-  password : 899a6b75-749e-4b10-ba5d-da2becd82f5e
+  host : yourlocal
+  port : 1111
+  password : yourlocal
 
 
 ---
@@ -28,22 +27,6 @@ server:
   port: ${PORT}
 
 redis:
-  host : 10.72.6.33
-  port : 59264
-  password : 899a6b75-749e-4b10-ba5d-da2becd82f5e
-
----
-spring:
-  profiles: predix-select
-#${vcap.services.postgres.credentials.jdbc_uri}
-redis:
-  host : ${vcap.services.redis-17.credentials.host}
-  port : ${vcap.services.redis-17.credentials.port}
-  password : ${vcap.services.redis-17.credentials.password}
-#  "redis-17": [
-#  {
-#   "credentials": {
-#    "host": "10.72.6.33",
-#    "password": "899a6b75-749e-4b10-ba5d-da2becd82f5e",
-#    "port": 59264
-#   },s
+  host : change
+  port : 111111
+  password : change
